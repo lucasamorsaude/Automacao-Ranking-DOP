@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Ranking DOP</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- GERAL --- */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #002060;
+            color: white;
+            padding: 40px;
+            margin: 0;
+            width: 1080px;
+            height: 840px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- CABEÇALHO (Logo e Título) --- */
+        header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        header img { width: 90px; height: auto; }
+        header h1 { font-size: 28px; font-weight: 700; text-align: center; flex-grow: 1; }
+
+        /* --- ESTRUTURA DO GRID COM FLEXBOX --- */
+        .grid-container {
+            display: flex;
+            flex-direction: column;
+            gap: 8px; 
+        }
+
+        .grid-row, .grid-header {
+            display: flex;
+            gap: 8px;
+            align-items: stretch;
+        }
+        
+        .grid-cell {
+            padding: 14px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        /* Coluna de Unidades (1ª coluna) */
+        .grid-cell.unidade {
+            flex-basis: 25%;
+            background-color: #0c3877;
+            justify-content: flex-start;
+        }
+
+        /* Container para as células de dados */
+        .data-cells {
+            flex-grow: 1;
+            display: flex;
+            gap: 8px;
+        }
+        .data-cells .grid-cell {
+            flex-grow: 1;
+            width: 100%;
+        }
+
+        /* --- ESTILOS ESPECÍFICOS --- */
+        
+        .grid-header .grid-cell {
+            background-color: #0c3877;
+            font-weight: 500;
+        }
+        
+        /**************************************************/
+        /* <<< INÍCIO DA LÓGICA DE CORES CORRIGIDA >>> */
+        /**************************************************/
+
+        /* 1. Cores das Metas aplicadas SOMENTE à PRIMEIRA célula de dados */
+        .zona-de-perigo .data-cells .grid-cell:first-child { background-color: #ea9999; color: black; }
+        .meta-amarela .data-cells .grid-cell:first-child { background-color: #ffe599; color: black; }
+        .meta-verde .data-cells .grid-cell:first-child { background-color: #b6d7a8; color: black; }
+
+        /* 2. Efeito Zebra aplicado SOMENTE às células que NÃO SÃO a primeira */
+        
+        /* Regra para as linhas ÍMPARES (primeira, terceira, etc.) */
+        .grid-row:not(.grid-footer):nth-child(odd) .data-cells .grid-cell:not(:first-child) {
+            background-color: #FFFFFF; /* Fundo branco */
+            color: black;
+        }
+
+        /* Regra para as linhas PARES (segunda, quarta, etc.) */
+        .grid-row:not(.grid-footer):nth-child(even) .data-cells .grid-cell:not(:first-child) {
+            background-color: #f2f2f2; /* Fundo cinza claro */
+            color: black;
+        }
+
+        /************************************************/
+        /* <<< FIM DA LÓGICA DE CORES CORRIGIDA >>> */
+        /************************************************/
+
+        /* Rodapé */
+        .grid-footer .grid-cell {
+            background-color: #808080;
+            color: black;
+        }
+
+        /* --- RODAPÉ (Legenda) --- */
+        footer { margin-top: auto; padding-left: 20px; }
+        .legenda-titulo { font-weight: 700; font-size: 18px; margin-bottom: 10px; }
+        .legenda-itens { display: flex; gap: 20px; align-items: center; }
+        .legenda-item { display: flex; align-items: center; gap: 8px; }
+        .cor-box { width: 35px; height: 25px; border-radius: 4px; }
+        .legenda-item span { font-size: 14px; font-weight: 700; }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Logo DOP">
+        <h1>Ranking Crédito PF Odonto | TESTE - TESTE</h1>
+    </header>
+    
+    <main>
+        <div class="grid-container">
+            <div class="grid-header">
+                <div class="grid-cell unidade">Unidade</div> 
+                <div class="data-cells">
+                    <div class="grid-cell">Total Contratado</div>
+                    <div class="grid-cell">N. Cadast. 30D</div>
+                    <div class="grid-cell">Simulações</div>
+                    <div class="grid-cell">Simulações Únicas</div>
+                </div>
+            </div>
+
+            {% for item in ranking %}
+            <div class="grid-row {{ item.cor }}">
+                <div class="grid-cell unidade">{{ item.unidade }}</div>
+                <div class="data-cells">
+                    <div class="grid-cell">{{ item.contratado }}</div>
+                    <div class="grid-cell">{{ item.cadastros }}</div>
+                    <div class="grid-cell">{{ item.simulacoes }}</div>
+                    <div class="grid-cell">{{ item.unicas }}</div>
+                </div>
+            </div>
+            {% endfor %}
+
+            <div class="grid-row grid-footer">
+                <div class="grid-cell unidade">TOTAL DOP</div>
+                <div class="data-cells">
+                    <div class="grid-cell">{{ totais.contratado }}</div>
+                    <div class="grid-cell">{{ totais.cadastros }}</div>
+                    <div class="grid-cell">{{ totais.simulacoes }}</div>
+                    <div class="grid-cell">{{ totais.unicas }}</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="legenda-titulo">Legenda:</div>
+        <div class="legenda-itens">
+            <div class="legenda-item"><div class="cor-box" style="background-color: #ea9999;"></div><span>Zona de Perigo</span></div>
+            <div class="legenda-item"><div class="cor-box" style="background-color: #ffe599;"></div><span>Meta Amarela</span></div>
+            <div class="legenda-item"><div class="cor-box" style="background-color: #b6d7a8;"></div><span>Meta Verde</span></div>
+            <div class="legenda-item"><div class="cor-box" style="background-color: #dfa843;"></div><span>Capa Dourada</span></div>
+            <div class="legenda-item"><div class="cor-box" style="background-color: #000000;"></div><span style="color: white;">Capa Preta</span></div>
+        </div>
+    </footer>
+</body>
+</html>
