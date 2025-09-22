@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Ranking</title>
+    <style>
+        /* Aqui colocamos o CSS para deixar parecido com o Canva */
+        body {
+            font-family: sans-serif;
+            background-color: #002060; /* Fundo azul escuro */
+            color: white;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse; /* Tira o espaçamento entre células */
+        }
+        th, td {
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+        th { /* Cabeçalho */
+            background-color: #0c3877;
+        }
+        /* Classes para as cores das metas */
+        .zona-de-perigo { background-color: #ea9999; color: black; }
+        .meta-amarela  { background-color: #ffe599; color: black; }
+        .meta-verde    { background-color: #b6d7a8; color: black; }
+        /* Adicione outras classes se precisar */
+
+        td:first-child { /* Célula do nome da unidade */
+            background-color: #0c3877;
+            color: white;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Ranking Crédito PF Odonto | 18/09</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th></th> <th>Total Contratado</th>
+                <th>N. Cadast. 30D</th>
+                <th>Simulações</th>
+                <th>Simulações Únicas</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in ranking %}
+            <tr class="{{ item.cor }}">
+                <td>{{ item.unidade }}</td>
+                <td>{{ item.contratado }}</td>
+                <td>{{ item.cadastros }}</td>
+                <td>{{ item.simulacoes }}</td>
+                <td>{{ item.unicas }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>TOTAL DOP</td>
+                <td>{{ totais.contratado }}</td>
+                <td>{{ totais.cadastros }}</td>
+                <td>{{ totais.simulacoes }}</td>
+                <td>{{ totais.unicas }}</td>
+            </tr>
+        </tfoot>
+    </table>
+
+</body>
+</html>
