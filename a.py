@@ -95,7 +95,7 @@ html_final = f"""
 <body>
 <div class="container">
     <header>
-        <img src="https://i.imgur.com/SECFp3s.png" alt="Logo DOP">
+        <img src="https://cdn.jsdelivr.net/gh/lucasamorsaude/Automacao-Ranking-DOP/logo-dop.png" alt="Logo DOP">
         <h1>🩺 % Confirmação Medicina | {hoje}</h1>
     </header>
     
@@ -142,7 +142,7 @@ html_final = f"""
     </main>
 
     <footer >
-        <div class="legenda-titulo">Legenda: Meta de confirmação mínima entre 95% e 100%</div>
+        <div class="legenda-titulo"><br>Meta de confirmação mínima entre 95% e 100%</div>
     </footer>
 </div>
 </body>

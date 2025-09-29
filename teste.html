@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <title>Ranking DOP</title>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
+        <style>
+        /* --- CORREÇÃO APLICADA AQUI --- */
+        body {
+                font-family: 'Montserrat', sans-serif;
+            background-color: #002060; /* Fundo azul ocupa tudo */
+            color: white;
+            margin: 0; /* Remove margens */
+            padding: 0; /* Remove preenchimento */
+        }
+        .container {
+                width: 1080px; /* Largura fixa do conteúdo */
+                padding: 40px; /* Espaçamento interno */
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: column;
+        }
+        /* --- FIM DA CORREÇÃO --- */
+
+        header { display: flex; align-items: center; margin-bottom: 20px; }
+        header img { width: 120px; }
+        header h1 { font-size: 32px; font-weight: 800; text-align: center; flex-grow: 1; margin: 0; }
+        .grid-container { display: flex; flex-direction: column; gap: 8px; }
+        .grid-row, .grid-header, .grid-footer { display: flex; gap: 8px; align-items: stretch; text-align: center; }
+        .grid-cell { padding: 12px 5px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; }
+        .grid-cell.unidade { flex: 0 0 25%; background-color: #0c3877; justify-content: flex-start; padding-left: 15px; }
+        .data-cells { flex: 1; display: flex; gap: 8px; }
+        .data-cells .grid-cell { flex: 1; }
+        .grid-header .grid-cell { background-color: #0c3877; font-weight: 500; font-size: 13px;}
+        .grid-footer .grid-cell { background-color: #737373; color: #000; }
+        .grid-footer .grid-cell.unidade { background-color: #0c3877; font-weight: 700; font-size: 14px; color: #fff; }
+        .cor-vermelho { background-color: #ea9999; color: #000; }
+        .cor-amarelo { background-color: #ffe599; color: #000; }
+        .cor-verde { background-color: #b6d7a8; color: #000; }
+        .celula-vazia { background-color: #fff; color: #000; }
+        footer { margin-top: auto; padding-top: 20px; }
+        .legenda-titulo { font-weight: 700; font-size: 18px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="https://cdn.jsdelivr.net/gh/lucasamorsaude/Automacao-Ranking-DOP/logo-dop.png" alt="Logo DOP">
+            <h1>🩺 % Confirmação Medicina | 30/09</h1>
+    </header>
+        <main>
+            <div class="grid-container">
+                <div class="grid-header">
+                     <div class="grid-cell unidade">Unidades</div>
+                    <div class="data-cells">
+                        <div class="grid-cell">Confirmação (%) até 9h</div>
+                        <div class="grid-cell">Confirmação (%) até 12h</div>
+                        <div class="grid-cell">(%) Evolução confirmação</div>
+                        <div class="grid-cell">Ocupação (%) até 09h</div>
+                        <div class="grid-cell">Ocupação (%) até 12h</div>
+                        <div class="grid-cell">(%) Evolução ocupação</div>
+                </div>
+            </div>
+                
+      <div class="grid-row">
+        <div class="grid-cell unidade">Araucária</div>
+        <div class="data-cells">
+            <div class="grid-cell cor-amarelo">69,13%</div>
+            <div class="grid-cell celula-vazia">--</div>
+            <div class="grid-cell celula-vazia">--</div>
+            <div class="grid-cell cor-amarelo">65,64%</div>
+            <div class="grid-cell celula-vazia">--</div>
+            <div class="grid-cell celula-vazia">--</div>
+    </div>
+  </div>
+    
+      <div class="grid-row">
+        <div class="grid-cell unidade">Colombo</div>
+        <div class="data-cells">
+            <div class="grid-cell cor-vermelho">26,00%</div>
+            <div class="grid-cell celula-vazia">--</div>
+            <div class="grid-cell celula-vazia">--</div>
+            <div class="grid-cell cor-vermelho">53,48%</div>
+            <div class="grid-cell celula-vazia">--</div>
+            <div class="grid-cell celula-vazia">--</div>
+    </div>
+  </div>
+    
+      <div class="grid-row">
+        <div class="grid-cell unidade">Curitiba Pinheirinho</div>
+        <div class="data-cells">
+            <div class="grid-cell cor-vermelho">7,69%</div>
+            <div class="grid-cell celula-vazia">--</div>
+            <div class="grid-cell celula-vazia">--</div>
+            <div class="grid-cell cor-amarelo">61,32%</div>
+            <div class="grid-cell celula-vazia">--</div>
+            <div class="grid-cell celula-vazia">--</div>
+    </div>
+  </div>
+    
+      <div class="grid-row">
+        <div class="grid-cell unidade">Foz do Iguaçu</div>
+        <div class="data-cells">
+            <div class="grid-cell cor-amarelo">66,67%</div>
+            <div class="grid-cell celula-vazia">--</div>
+            <div class="grid-cell celula-vazia">--</div>
+            <div class="grid-cell cor-amarelo">64,03%</div>
+            <div class="grid-cell celula-vazia">--</div>
+            <div class="grid-cell celula-vazia">--</div>
+    </div>
+  </div>
+    
+      <div class="grid-row">
+        <div class="grid-cell unidade">Francisco Beltrão</div>
+        <div class="data-cells">
+            <div class="grid-cell cor-vermelho">11,11%</div>
+            <div class="grid-cell celula-vazia">--</div>
+            <div class="grid-cell celula-vazia">--</div>
+            <div class="grid-cell cor-vermelho">36,49%</div>
+            <div class="grid-cell celula-vazia">--</div>
+            <div class="grid-cell celula-vazia">--</div>
+    </div>
+  </div>
+    
+      <div class="grid-row">
+        <div class="grid-cell unidade">Montenegro</div>
+        <div class="data-cells">
+            <div class="grid-cell cor-vermelho">48,84%</div>
+            <div class="grid-cell celula-vazia">--</div>
+            <div class="grid-cell celula-vazia">--</div>
+            <div class="grid-cell cor-amarelo">69,35%</div>
+            <div class="grid-cell celula-vazia">--</div>
+            <div class="grid-cell celula-vazia">--</div>
+    </div>
+  </div>
+    
+      <div class="grid-row">
+        <div class="grid-cell unidade">SJDR</div>
+        <div class="data-cells">
+            <div class="grid-cell cor-verde">73,15%</div>
+            <div class="grid-cell celula-vazia">--</div>
+            <div class="grid-cell celula-vazia">--</div>
+            <div class="grid-cell cor-verde">76,06%</div>
+            <div class="grid-cell celula-vazia">--</div>
+            <div class="grid-cell celula-vazia">--</div>
+    </div>
+  </div>
+    
+                <div class="grid-footer">
+                    <div class="grid-cell unidade">TOTAL DOP</div>
+                    <div class="data-cells">
+                        <div class="grid-cell">43,23%</div>
+                        <div class="grid-cell">--</div>
+                        <div class="grid-cell">--</div>
+                        <div class="grid-cell">60,91%</div>
+                        <div class="grid-cell">--</div>
+                        <div class="grid-cell">--</div>
+                </div>
+            </div>
+        </div>
+    </main>
+        <footer>
+            <div class="legenda-titulo"><br>Meta de confirmação mínima entre 95% e 100%</div>
+    </footer>
+</div>
+</body>
+</html>
